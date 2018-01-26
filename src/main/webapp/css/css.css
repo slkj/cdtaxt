@@ -1,0 +1,46 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body{font-family: 微软雅黑, 新宋体;}
+a{color: Black;text-decoration: none;}
+body, div, dl, dt, dd, ul, ol, li,h1, h2, h3, h4, h5, h6, pre, code,form, fieldset, legend, input, button,textarea, p, blockquote, th, td{margin: 0; padding: 0;}
+body{font-size:14px; font-family:Microsoft Yahei; background:url(../images/bg_01.png) repeat-x; width:100%;}
+a:link{text-decoration:none;color:#363636}
+a:visited{text-decoration:none;color:#363636}
+a:hover{text-decoration:underline; color:#02588B}
+.clearfix:after{content: ".";display: block;height: 0; clear: both;visibility: hidden;}
+.clearfix{display: inline-block;}
+.clear{clear: both;height: 0;line-height: 0;font-size: 0;}
+.bg{background:url(../images/oabg_01_03.png) no-repeat 50% 50%; height:570px; width:100%; margin:0 auto;}
+.bg_zm{background:url(../images/zmbg_03.png) no-repeat 50% 50%; height:570px; width:100%; margin:0 auto;}
+.bg_hx{background:url(../images/hx_03.png) no-repeat 50% 50%; height:570px; width:100%; margin:0 auto;}
+.bg_wb{background:url(../images/wb_01.png) no-repeat 50% 50%; height:570px; width:100%; margin:0 auto;}
+.bg_yz{background-color: white;}
+
+.wbbg{width:550px;height:482px; position:fixed;_position:absolute;top:165px;left:50%; margin-left:-275px;z-index:10;}
+.yy{ height:220px;margin-left:0px; margin-top:28px; color:#666666;background:url(../images/login_logo.jpg) repeat-x;}
+.fx{background:#edebec; border:1px solid #aaa9a9; color:#666666;}
+.yy1{margin-left:74px; margin-top:70px; color:#666666;}
+
+.login_bg{width:100%; position:fixed;_position:absolute;z-index:10;background-color: }
+.login_logo{ height:260px;margin-left:0px; margin-top:28px;background:url(../images/login_lgb.jpg) no-repeat bottom; }
+.login_form{ margin-left:40%; margin-top:28px; color:#666666;text-align: center;}
+/*登录框*/
+.delu1{margin-left:70px; margin-top:50px;}
+.jname{width: 302px;height: 52px;margin: 16px 0px 0px 0;display: block;border: 0px ;}
+.jnameinput{width: 240px;height: 32px;line-height: 30px; color:#FFF;padding:10px 0 10px 30px; border:none; font-size:14px;background:rgba(2, 88, 139, 0.82);-moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius:5px;font-family:Microsoft Yahei;}
+.jloginbtn{background:url(../images/ar.png) 180px center no-repeat #bd3880;width: 270px;height: 52px;border-radius:5px;text-align: center;margin: 15px 0 0 0; cursor:pointer; color:#FFF; border:none; font-size:16px;font-family:Microsoft Yahei;}
+.jloginbtn:hover{background:url(../images/ar.png) 180px center no-repeat #d84293;}
+.jloginbtn i{display:inline-block; width:25px; height:25px; background:url(../images/arr.png);}
+.easyui-tree li{margin: 0px;padding: 1px;}
+#mainlogo{position: absolute;top: 0px;left: 20px;width: 575px;height: 72px;}
+#mainlogo img{margin-top: 15px;}
+#center{padding-left: 575px;padding-right: 425px;}
+#mainctrl{position: absolute;top: 0px;right: 0px;height: 72px;width: 425px;}
+.wel{height: 30px;line-height: 30px;color: #FFFFFF;font-size: 14px;text-align: right;padding-right: 15px;}
+.wel a{color: #fff}
+.wel a:hover{color: #fff;text-decoration: underline}
+.ctr{vertical-align: middle;margin-top: 18px;height: 24px;text-align: right;background-image: url(../images/beijing.gif);background-repeat: repeat-x;}
+.ctr li{float: left;list-style: none;}
+.zi{padding-right: 16px;padding-left: 3px;}
+a.v1:visited, a.v1:active, a.v1:link{font-size: 14px;color: #000;text-decoration: none;}
+a.v1:hover{font-size: 14px;color: #005500;text-decoration: none;}

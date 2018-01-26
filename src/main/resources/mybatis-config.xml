@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias alias="LinkedCaseInsensitiveMap"
+			type="org.springframework.util.LinkedCaseInsensitiveMap" />
+		<typeAlias alias="Vehicle" type="cn.slkj.cdtaxt.entity.Vehicle" />
+		<typeAlias alias="Company" type="cn.slkj.cdtaxt.entity.Company" />
+		<typeAlias alias="User" type="cn.slkj.cdtaxt.entity.User" />
+		<typeAlias alias="Module" type="cn.slkj.cdtaxt.entity.Module" />
+		<typeAlias alias="Role" type="cn.slkj.cdtaxt.entity.Role" />
+	</typeAliases>
+	<plugins>
+		<plugin
+			interceptor="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
+			<property name="dialectClass"
+				value="com.github.miemiedev.mybatis.paginator.dialect.SQLServer2005Dialect" />
+		</plugin>
+	</plugins>
+
+</configuration>

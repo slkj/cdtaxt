@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.slkj.cdtaxt.mapper.CompanyMapper">
+	<sql id="sql_temp">
+		id, compCode,compName,linkman,mobile,email,qq,
+		level, bCompany,corporate,contactMenber,contactWay,organizationCode,businessLicense,
+		registeredCapital, compAddress,introduction,xkz,remarks,sfbz,status
+	</sql>
+	<select id="queryComList" resultType="Company" parameterType="hashmap">
+		SELECT * FROM COMPANY
+		<where>
+			<if test="compName != null and compName != ''">
+				AND COMPNAME LIKE '%'+ #{compName} +'%'
+			</if>
+		</where>
+	</select>
+	<select id="queryList" resultType="Company" parameterType="hashmap">
+		SELECT
+		<include refid="sql_temp" />
+		FROM COMPANY
+		<where>
+			<if test="compName != null and compName != ''">
+				AND COMPNAME LIKE '%'+ #{compName} +'%'
+			</if>
+		</where>
+	</select>
+
+	<select id="queryOne" resultType="Company" parameterType="string">
+		SELECT <include refid="sql_temp" /> FROM COMPANY WHERE ID = #{id}
+	</select>
+
+	<insert id="save" parameterType="Company">
+		INSERT INTO COMPANY (compCode,compName,linkman,mobile,email,qq,
+		level, bCompany,corporate,contactMenber,contactWay,organizationCode,businessLicense,
+		registeredCapital, compAddress,introduction,xkz,remarks,sfbz,status)
+		VALUES(#{compCode},#{compName},#{linkman},#{mobile},#{email},#{qq},#{level},
+		#{ bCompany},#{corporate},#{contactMenber},#{contactWay},#{organizationCode},
+		#{businessLicense},#{registeredCapital},#{ compAddress},#{introduction},
+		#{xkz},#{remarks},#{sfbz},#{status} )
+	</insert>
+
+	<update id="edit" parameterType="Company">
+		UPDATE COMPANY SET
+		compCode=#{compCode}, compName=#{compName},linkman=#{linkman},
+		mobile=#{mobile},email=#{email},qq=#{qq},
+        status=#{ status}
+        WHERE ID= #{id}
+	</update>
+
+	<delete id="delete" parameterType="string">
+		DELETE FROM COMPANY WHERE ID = #{id}
+	</delete>
+</mapper>

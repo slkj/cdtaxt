@@ -1,0 +1,30 @@
+//common开头的为 通用消息
+var common001 = '提示';
+var common002 = '请选中一行数据！';
+var common003 = '删除成功！';
+var common004 = '保存成功！';
+var common005 = '请选中主表的一行数据！';
+var common006 = '确定要删除[{0}]吗？';
+var common007 = '确定要关闭[{0}]吗？';
+var common008 = '欢迎页面';
+var common009 = '关闭';
+var common010 = '确定要退出系统吗？';
+var common011 = '用户名不能为空';
+var common012 = '密码不能为空';
+var common013 = '查询';
+var common014 = '确定';
+var common015 = '取消';
+var common016 = '保存';
+var common017 = "正在保存，请稍候......";
+var common018 = "该操作只能选择一条数据！";
+var common019 = '请选中至少一行数据！';
+var common020 = "正在处理，请稍候......";
+
+var sys001 = "用户名/密码  输入有误！";
+var sys002 = "正在登录，请稍候......";
+var sys003 = "结果集";
+var sys004 = "还没有为[{0}]授予权限！";
+var sys005 = "两次输入的新密码不一致！";
+var sys006 = "组织机构的根不允许修改和删除！";
+var sys007 = "必须输入用户代码！";
+var sys008 = "密码重置成功！";
