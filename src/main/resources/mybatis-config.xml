@@ -12,6 +12,8 @@
 		<typeAlias alias="User" type="cn.slkj.cdtaxt.entity.User" />
 		<typeAlias alias="Module" type="cn.slkj.cdtaxt.entity.Module" />
 		<typeAlias alias="Role" type="cn.slkj.cdtaxt.entity.Role" />
+		<typeAlias alias="TotalNum" type="cn.slkj.cdtaxt.echarts.TotalNum" />
+		
 	</typeAliases>
 	<plugins>
 		<plugin

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 
+import cn.slkj.cdtaxt.echarts.TotalNum;
 import cn.slkj.cdtaxt.entity.Vehicle;
 @Repository
 public interface VehicleMapper {
@@ -21,4 +22,8 @@ public interface VehicleMapper {
 
 	public List<Vehicle> getAllList(HashMap<String, Object> hashMap);
 
+	public List<TotalNum> getBarData(HashMap<String, Object> hashMap);
+
+	public List<TotalNum> queryByCom(HashMap<String, Object> hashMap);
+	public List<TotalNum> queryByCarType(HashMap<String, Object> hashMap);
 }
