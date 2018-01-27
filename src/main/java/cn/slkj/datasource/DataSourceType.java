@@ -10,4 +10,5 @@ public class DataSourceType {
 	// 192.168.10.72:3308/100msh_partner
 	public static final String SOURCE_HBSL = "ds_hbsl";
 
+	
 }
