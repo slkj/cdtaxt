@@ -11,10 +11,8 @@
 		driver1Tel, driver2, driver2Tel, simNo, terminalId, terminalType,
 		terminalGYS, inNetDateString, memo, pkey,
 		carOwnerPhoto,carPhoto,certificatePhoto,certificatePhoto2,driverPhoto,
-		(SELECT [value] FROM FromCode where lookupCode ='VEHICLE_CARTYPE' AND
-		[key]= carBrand) as carBrandText,
-		(SELECT [value] FROM FromCode where
-		lookupCode ='CUSTOMER_TYPE' AND [key]= carPlateCol) as carPlateColText
+		(SELECT [value] FROM FromCode where lookupCode ='VEHICLE_CARTYPE' AND [key]= carBrand) as carBrandText,
+		(SELECT [value] FROM FromCode where lookupCode ='CUSTOMER_TYPE' AND [key]= carPlateCol) as carPlateColText
 	</sql>
 
 	<select id="getAllList" resultType="Vehicle">
@@ -34,93 +32,55 @@
 		</where>
 	</select>
 	<select id="queryOne" parameterType="hashmap" resultType="Vehicle">
-		SELECT
+       SELECT
 		<include refid="sql_base"></include>
 		FROM TB_VEHICLE_TAXT
-		<where>
-			<if test="id != null and id != ''">
-				AND ID = #{id}
-			</if>
-			<if test="carPlateNo != null and carPlateNo != ''">
+        <where>
+            <if test="id != null and id != ''">
+                AND ID = #{id}
+            </if>
+           <if test="carPlateNo != null and carPlateNo != ''">
 				AND carPlateNo LIKE '%'+#{carPlateNo}+'%'
 			</if>
-		</where>
-	</select>
-
+        </where>
+    </select>
+    
 	<insert id="save" parameterType="Vehicle">
-		INSERT INTO TB_VEHICLE_TAXT (
-		carPlateNo, carPlateCol, carType2,
-		transportNo, carAddProvince, carAddCity, carAddCounty, hgzDataSource,
-		vin2, engineNo, carBrand, quality, approvedQua, axleCount, tyreCount,
-		tyreSpecificate, dragQua, outLen, outwide, outhigh, inlen, inwide,
-		inhigh, vehicleModel, carColor, carProductEndDateString, customerType,
-		customerName, linkman, linkmanTel, carOwner, carOwnerTel, driver1,
-		driver1Tel, driver2, driver2Tel, simNo, terminalId, terminalType,
-		terminalGYS, inNetDateString, memo,
-		pkey,carOwnerPhoto,carPhoto,certificatePhoto,certificatePhoto2,driverPhoto
-		)
-		VALUES
-		(
-		#{carPlateNo},#{carPlateCol},#{carType2},#{transportNo},#{carAddProvince},
-		#{carAddCity},#{carAddCounty},#{hgzDataSource},#{vin2},#{engineNo},#{carBrand},#{quality},
-		#{approvedQua},#{axleCount},#{tyreCount},#{tyreSpecificate},#{dragQua},#{outLen},#{outwide},
-		#{outhigh},#{inlen},#{inwide},#{inhigh},#{vehicleModel},#{carColor},#{carProductEndDateString},
-		#{customerType},#{customerName},#{linkman},#{linkmanTel},#{carOwner},#{carOwnerTel},#{driver1},
-		#{driver1Tel},#{driver2},#{driver2Tel},#{simNo},#{terminalId},#{terminalType},#{terminalGYS},
-		#{inNetDateString},#{memo},#{pkey},#{carOwnerPhoto},#{carPhoto},#{certificatePhoto},#{certificatePhoto2},#{driverPhoto}
-		)
-	</insert>
-
-	<update id="edit" parameterType="Vehicle">
-		UPDATE TB_VEHICLE_TAXT SET
-		carPlateNo=#{carPlateNo}, carPlateCol=#{carPlateCol}, carType2=#{carType2},
-		transportNo=#{transportNo},
-		carAddProvince=#{carAddProvince}, carAddCity=#{carAddCity}, carAddCounty=#{carAddCounty},
-		hgzDataSource=#{hgzDataSource},
-		vin2=#{vin2}, engineNo=#{engineNo}, carBrand=#{carBrand}, quality=#{quality},
-		approvedQua=#{approvedQua},
-		axleCount=#{axleCount}, tyreCount=#{tyreCount},
-		tyreSpecificate=#{tyreSpecificate},dragQua=#{dragQua},
-		outLen=#{outLen},
-		outwide=#{outwide}, outhigh=#{outhigh}, inlen=#{inlen}, inwide=#{inwide},
-		inhigh=#{inhigh}, vehicleModel=#{vehicleModel}, carColor=#{carColor},
-		carProductEndDateString=#{carProductEndDateString},
-		customerType=#{customerType},
-		customerName=#{customerName},linkman=#{linkman},
-		linkmanTel=#{linkmanTel},
-		carOwner=#{carOwner}, carOwnerTel=#{carOwnerTel},
-		driver1=#{driver1},driver1Tel=#{driver1Tel}, driver2=#{driver2},
-		driver2Tel=#{driver2Tel}, simNo=#{simNo}, terminalId=#{terminalId},
-		terminalType=#{terminalType}, terminalGYS=#{terminalGYS}
-		, inNetDateString=#{inNetDateString}, memo=#{memo},
-		pkey=#{pkey},carOwnerPhoto=#{carOwnerPhoto},carPhoto=#{carPhoto},
-		certificatePhoto=#{certificatePhoto},certificatePhoto2=#{certificatePhoto2},driverPhoto=#{driverPhoto}
-		WHERE ID = #{ id }
-	</update>
-
-	<select id="getBarData" parameterType="hashmap" resultType="TotalNum">
-
-		SELECT e.compname as week, count(e.compname) as count
-		FROM tb_vehicle_taxt d,company e
-		WHERE d.customerType=e.compcode group by e.compname
-
-	</select>
-
-	<select id="queryByCom" parameterType="hashmap" resultType="TotalNum">
-
-		SELECT e.compname as week, count(e.compname) as count
-		FROM tb_vehicle_taxt d,company e
-		WHERE d.customerType=e.compcode group by e.compname
-
-	</select>
-	<select id="queryByCarType" parameterType="hashmap" resultType="TotalNum">
-
-		SELECT e.[value] as week,count(e.[value]) as count
-		FROM tb_vehicle_taxt d,FromCode e
-		WHERE d.carBrand=e.[key]
-		and e.lookupCode='VEHICLE_CARTYPE'
-		group by e.[value]
-
-	</select>
-
+        INSERT INTO TB_VEHICLE_TAXT (
+        	carPlateNo, carPlateCol, carType2,
+			transportNo, carAddProvince, carAddCity, carAddCounty, hgzDataSource,
+			vin2, engineNo, carBrand, quality, approvedQua, axleCount, tyreCount,
+			tyreSpecificate, dragQua, outLen, outwide, outhigh, inlen, inwide,
+			inhigh, vehicleModel, carColor, carProductEndDateString, customerType,
+			customerName, linkman, linkmanTel, carOwner, carOwnerTel, driver1,
+			driver1Tel, driver2, driver2Tel, simNo, terminalId, terminalType,
+			terminalGYS, inNetDateString, memo, pkey,carOwnerPhoto,carPhoto,certificatePhoto,certificatePhoto2,driverPhoto
+        )
+        VALUES
+        	(
+        		#{carPlateNo},#{carPlateCol},#{carType2},#{transportNo},#{carAddProvince},
+        		#{carAddCity},#{carAddCounty},#{hgzDataSource},#{vin2},#{engineNo},#{carBrand},#{quality},
+        		#{approvedQua},#{axleCount},#{tyreCount},#{tyreSpecificate},#{dragQua},#{outLen},#{outwide},
+        		#{outhigh},#{inlen},#{inwide},#{inhigh},#{vehicleModel},#{carColor},#{carProductEndDateString},
+        		#{customerType},#{customerName},#{linkman},#{linkmanTel},#{carOwner},#{carOwnerTel},#{driver1},
+        		#{driver1Tel},#{driver2},#{driver2Tel},#{simNo},#{terminalId},#{terminalType},#{terminalGYS},
+        		#{inNetDateString},#{memo},#{pkey},#{carOwnerPhoto},#{carPhoto},#{certificatePhoto},#{certificatePhoto2},#{driverPhoto}
+        	)
+    </insert>
+    
+     <update id="edit" parameterType="Vehicle">
+        UPDATE TB_VEHICLE_TAXT  SET 
+            carPlateNo=#{carPlateNo}, carPlateCol=#{carPlateCol}, carType2=#{carType2}, transportNo=#{transportNo},
+             carAddProvince=#{carAddProvince}, carAddCity=#{carAddCity}, carAddCounty=#{carAddCounty}, hgzDataSource=#{hgzDataSource}, 
+        	vin2=#{vin2}, engineNo=#{engineNo}, carBrand=#{carBrand},  quality=#{quality}, approvedQua=#{approvedQua},
+        	 axleCount=#{axleCount}, tyreCount=#{tyreCount}, tyreSpecificate=#{tyreSpecificate},dragQua=#{dragQua}, outLen=#{outLen},
+        	   outwide=#{outwide}, outhigh=#{outhigh}, inlen=#{inlen}, inwide=#{inwide}, 
+        	    inhigh=#{inhigh}, vehicleModel=#{vehicleModel}, carColor=#{carColor}, carProductEndDateString=#{carProductEndDateString},
+ 			 customerType=#{customerType}, customerName=#{customerName},linkman=#{linkman}, linkmanTel=#{linkmanTel},
+ 			  carOwner=#{carOwner}, carOwnerTel=#{carOwnerTel}, driver1=#{driver1},driver1Tel=#{driver1Tel}, driver2=#{driver2},
+ 			   driver2Tel=#{driver2Tel}, simNo=#{simNo}, terminalId=#{terminalId}, terminalType=#{terminalType}, terminalGYS=#{terminalGYS}
+ 			  , inNetDateString=#{inNetDateString}, memo=#{memo}, pkey=#{pkey},carOwnerPhoto=#{carOwnerPhoto},carPhoto=#{carPhoto},
+ 			  certificatePhoto=#{certificatePhoto},certificatePhoto2=#{certificatePhoto2},driverPhoto=#{driverPhoto}
+        WHERE ID = #{ id }
+    </update>
 </mapper>

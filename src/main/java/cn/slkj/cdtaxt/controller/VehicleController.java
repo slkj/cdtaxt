@@ -1,11 +1,12 @@
 package cn.slkj.cdtaxt.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,9 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,13 +33,11 @@ import com.github.miemiedev.mybatis.paginator.domain.Order;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 
-import cn.slkj.cdtaxt.echarts.EchartData;
-import cn.slkj.cdtaxt.echarts.Series;
-import cn.slkj.cdtaxt.echarts.TotalNum;
 import cn.slkj.cdtaxt.entity.Vehicle;
 import cn.slkj.cdtaxt.service.VehicleService;
 import cn.slkj.slUtil.easyuiUtil.EPager;
 import cn.slkj.slUtil.easyuiUtil.JsonResult;
+import cn.slkj.slUtil.javaUtil.StringUtil;
 
 /**
  * 
@@ -215,42 +220,5 @@ public class VehicleController {
 		}
 		return null;
 	}
-	   /**
-     * 饼状图
-     * @param <T>
-     * @return
-     */
-    @RequestMapping("/showEchartBar")
-    @ResponseBody
-    public EchartData BarData() {
-        System.out.println("柱状图");
-        List<String> category = new ArrayList<String>();
-        List<Long> serisData=new ArrayList<Long>();
-        HashMap<String, Object> hashMap = new HashMap<>();
-		List<TotalNum> list = vehicleService.getBarData(hashMap );
-		 for (TotalNum totalNum : list) {
-	            category.add(totalNum.getWeek());
-	            serisData.add(totalNum.getCount());
-	        }
-        List<String> legend = new ArrayList<String>(Arrays.asList(new String[] { "合计" }));// 数据分组
-        List<Series> series = new ArrayList<Series>();// 纵坐标
-        series.add(new Series("合计", "bar", serisData));
-        EchartData data = new EchartData(legend, category, series);
-        return data;
-    }
-    @RequestMapping("/queryByCom")
-    @ResponseBody
-    public List<TotalNum>  queryByCom() {
-    	HashMap<String, Object> hashMap = new HashMap<>();
-    	List<TotalNum> list = vehicleService.queryByCom(hashMap );
-        return list;
-    }
-    @RequestMapping("/queryByCarType")
-    @ResponseBody
-    public List<TotalNum>  queryByCarType() {
-    	HashMap<String, Object> hashMap = new HashMap<>();
-    	List<TotalNum> list = vehicleService.queryByCarType(hashMap );
-        return list;
-    }
-    
+
 }

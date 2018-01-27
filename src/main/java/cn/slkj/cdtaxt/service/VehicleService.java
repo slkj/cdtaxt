@@ -7,7 +7,6 @@ import javax.servlet.ServletOutputStream;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 
-import cn.slkj.cdtaxt.echarts.TotalNum;
 import cn.slkj.cdtaxt.entity.Vehicle;
 
 public interface VehicleService {
@@ -22,10 +21,4 @@ public interface VehicleService {
 	public void exportExcel(HashMap<String, Object> map, String[] titles, ServletOutputStream outputStream);
 	
 	List<Vehicle> getList(HashMap<String, Object> hashMap);
-
-	List<TotalNum> getBarData(HashMap<String, Object> hashMap);
-
-	List<TotalNum> queryByCom(HashMap<String, Object> hashMap);
-	List<TotalNum> queryByCarType(HashMap<String, Object> hashMap);
-	
 }
