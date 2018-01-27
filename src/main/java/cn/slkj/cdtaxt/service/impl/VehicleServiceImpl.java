@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 
+import cn.slkj.cdtaxt.echarts.TotalNum;
 import cn.slkj.cdtaxt.entity.Vehicle;
 import cn.slkj.cdtaxt.mapper.VehicleMapper;
 import cn.slkj.cdtaxt.service.VehicleService;
@@ -143,4 +144,21 @@ public class VehicleServiceImpl implements VehicleService {
 
 	}
 
+	@Override
+	public List<TotalNum> getBarData(HashMap<String, Object> hashMap) {
+		// TODO Auto-generated method stub
+		return mapper.getBarData(hashMap);
+	}
+
+	@Override
+	public List<TotalNum> queryByCom(HashMap<String, Object> hashMap) {
+		// TODO Auto-generated method stub
+		return mapper.queryByCom(hashMap);
+	}
+	@Override
+	public List<TotalNum> queryByCarType(HashMap<String, Object> hashMap) {
+		// TODO Auto-generated method stub
+		return mapper.queryByCarType(hashMap);
+	}
+	
 }
